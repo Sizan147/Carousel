@@ -74,3 +74,26 @@ const targetPick = (e)=>{
 }
 
 divBubbles.addEventListener("click", targetPick);
+
+// 4th step -------------------------------------------------
+
+let section = document.querySelector(".section");
+let autoSlide = setInterval(()=>{
+    moveToRight()
+},3000)
+let isMouseInside = false
+
+section.addEventListener("mouseover",()=>{
+    if(!isMouseInside){
+        clearInterval(autoSlide)
+        isMouseInside = true
+    }
+})
+section.addEventListener("mouseout", ()=>{
+    if(isMouseInside){
+        autoSlide = setInterval(()=>{
+            moveToRight()
+        },3000)
+        isMouseInside = false
+    }
+})
